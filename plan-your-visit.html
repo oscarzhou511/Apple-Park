@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Park - Plan Your Visit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for Plan Your Visit page if needed */
+        .map-placeholder {
+            background-color: #e9e9e9;
+            /* Kept as fallback or if iframe fails to load */
+            width: 100%;
+            /* height: 400px; Remove fixed height or adjust as needed for aspect ratio */
+            aspect-ratio: 16 / 9;
+            /* Common aspect ratio for maps, adjust as you like */
+            display: flex;
+            /* Kept for centering if iframe was not full width/height */
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin: 40px auto;
+            text-align: center;
+            color: #555;
+            font-size: 1.2em;
+            overflow: hidden;
+            /* Important to clip the iframe corners if using border-radius */
+        }
+
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            /* Ensures no iframe border overrides your styling */
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background-color: var(--color-white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            color: var(--color-black);
+            font-size: 1.6em;
+            margin-bottom: 0.5em;
+        }
+
+        .info-card p,
+        .info-card ul {
+            font-size: 1em;
+            color: var(--color-dark-gray);
+            margin-left: 0;
+            padding-left: 0;
+            /* For ul */
+        }
+
+        .info-card li {
+            list-style: none;
+            /* Remove default bullets */
+            padding-bottom: 8px;
+        }
+
+        .info-card li::before {
+            /* Custom bullet */
+            content: "";
+            color: var(--circle-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .visit-hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"></a>
+        </div>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="overview.html">Overview</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="overview.html#architecture">Architecture</a></li>
+                        <li><a href="overview.html#design-philosophy">Design Philosophy</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="environment.html">Environment</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="environment.html#sustainability">Sustainability</a></li>
+                        <li><a href="environment.html#energy">Energy</a></li>
+                        <li><a href="environment.html#landscape">Landscape</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="visitors-center.html">Visitors Center</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="visitors-center.html#cafe">Café</a></li>
+                        <li><a href="visitors-center.html#store">Apple Store</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="campus-features.html">Campus Features</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="campus-features.html#steve-jobs-theater">Steve Jobs Theater</a></li>
+                        <li><a href="campus-features.html#workspaces">Workspaces</a></li>
+                        <li><a href="campus-features.html#green-spaces">Green Spaces</a></li>
+                    </ul>
+                </li>
+                <li><a href="plan-your-visit.html">Plan Your Visit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section section-light-gray">
+            <div class="container">
+                <h1 class="animatable">Plan Your Visit to Apple Park</h1>
+                <p class="animatable" style="max-width: 700px; margin-bottom: 40px;">
+                    Experience the unique atmosphere of the Apple Park Visitors Center. Here's what you need to know to
+                    make the most of your trip.
+                </p>
+                <img src="images/visitor-center-hero.jpeg" alt="Apple Park Visitors Center Entrance"
+                    class="visit-hero-image animatable">
+            </div>
+        </section>
+
+        <section class="section section-white">
+            <div class="container">
+                <h2 class="animatable">Getting Here & Hours</h2>
+                <div class="info-grid">
+                    <div class="info-card animatable">
+                        <h3><span class="highlight-yellow">Address</span></h3>
+                        <p>
+                            Apple Park Visitor Center<br>
+                            10600 N Tantau Ave<br>
+                            Cupertino, CA 95014
+                        </p>
+                    </div>
+                    <div class="info-card animatable">
+                        <h3><span class="highlight-pink">Hours</span> of Operation</h3>
+                        <p>
+                            Monday – Friday: 9:00 AM – 7:00 PM<br>
+                            Saturday: 10:00 AM – 7:00 PM<br>
+                            Sunday: 11:00 AM – 6:00 PM
+                        </p>
+                        <p><small>Hours are subject to change. Please check Apple's official website for the latest
+                                information.</small></p>
+                    </div>
+                    <div class="info-card animatable">
+                        <h3><span class="highlight-green">Parking</span> & Transit</h3>
+                        <p>
+                            Complimentary underground parking is available on-site. The entrance is off Tantau Avenue.
+                            Public transit options are also available; check local transit schedules.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-light-gray">
+            <div class="container">
+                <h2 class="animatable">What to <span class="circled">Experience</span></h2>
+                <p class="animatable" style="margin-bottom: 40px;">The Visitors Center offers several unique
+                    attractions:</p>
+
+                <div class="content-grid">
+                    <div class="card animatable">
+                        <img src="images/interior.png" alt="Interior of Apple Park Visitors Center">
+                        <h3>AR <span class="highlight">Model</span></h3>
+                        <p>Explore an immersive augmented reality experience of Apple Park, showcasing its design and
+                            features.</p>
+                        <a href="https://www.apple.com/newsroom/2017/11/apple-park-visitor-center-opens-to-the-public/"
+                            class="learn-more">Learn More →</a>
+                    </div>
+                    <div class="card animatable">
+                        <img src="images/rooftop.png" alt="Rooftop terrace at Apple Park Visitors Center">
+                        <h3>Café & <span class="highlight-pink">Rooftop</span></h3>
+                        <p>Enjoy refreshments at the café and take in views of the main campus from the stunning rooftop
+                            terrace.</p>
+                        <a href="visitors-center.html#cafe" class="learn-more">Learn More →</a>
+                    </div>
+                    <div class="card animatable">
+                        <img src="images/merch.png" alt="Exclusive Apple Park merchandise">
+                        <h3>Apple <span class="highlight-green">Store</span></h3>
+                        <p>Shop for Apple products and exclusive Apple Park merchandise not available anywhere else.</p>
+                        <a href="visitors-center.html#store" class="learn-more">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-white">
+            <div class="container">
+                <h2 class="animatable">Visitor <span class="marker-underline">Tips</span></h2>
+                <div class="info-grid">
+                    <div class="info-card animatable">
+                        <h3>Make the Most of It</h3>
+                        <ul>
+                            <li>Allow at least 1-2 hours for your visit.</li>
+                            <li>Photography is generally welcome in public areas.</li>
+                            <li>The Visitors Center is wheelchair accessible.</li>
+                            <li>Check for any special events or holiday hours before you go.</li>
+                            <li>Wi-Fi is available for guests.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card animatable">
+                        <h3><span class="highlight-yellow">Nearby</span></h3>
+                        <p>Cupertino offers various dining and shopping options if you wish to extend your day in the
+                            area. The views from the rooftop terrace also give a sense of the surrounding <span
+                                class="highlight-green">green spaces</span> that define Apple Park.</p>
+                        <img src="images/green-spaces.png" alt="View of green spaces near Apple Park"
+                            style="margin-top:15px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-light-gray">
+            <div class="container">
+                <h2 class="animatable">Location <span class="circled-blue">Map</span></h2>
+                <div class="map-placeholder animatable">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6319.868320364432!2d-122.0125537!3d37.3347887!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb596e9e188fd%3A0x3b0d8391510688f0!2sApple%20Park!5e1!3m2!1sen!2sau!4v1750200098942!5m2!1sen!2sau"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright © 2025 Apple Inc. All rights reserved.</p>
+        <p>This is a conceptual website and not affiliated with Apple Inc. Visitor information is illustrative; always
+            check official sources.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

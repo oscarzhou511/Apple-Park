@@ -1,0 +1,562 @@
+/* Basic Reset and System Font Stack */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 1.6;
+  color: #1d1d1f;
+  /* Apple's dark text color */
+  background-color: #fff;
+  /* White background */
+  -webkit-font-smoothing: antialiased;
+  /* Improve text rendering */
+  -moz-osx-font-smoothing: grayscale;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Color Palette Variables (Mimicking Apple's neutrals) */
+:root {
+  --color-white: #fff;
+  --color-black: #1d1d1f;
+  --color-light-gray: #f5f5f7;
+  --color-medium-gray: #d2d2d7;
+  --color-dark-gray: #86868b;
+  --highlight-yellow: #fff9b1;
+  --highlight-pink: #ffd6e0;
+  --highlight-green: #dbffd6;
+  --circle-red: #ff3b30;
+  --circle-blue: #007aff;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  /* Semi-bold, mimicking SF Pro Medium/Semibold */
+  color: var(--color-black);
+}
+
+h1 {
+  font-size: 4.5em;
+  /* Large headline */
+  line-height: 1.05;
+  margin-bottom: 0.2em;
+}
+
+h2 {
+  font-size: 2.5em;
+  line-height: 1.1;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.8em;
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.4em;
+}
+
+p {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+  max-width: 800px;
+  /* Limit text width for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #06c;
+  /* Standard link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout and Structure */
+.container {
+  max-width: 1000px;
+  /* Content width constraint */
+  margin: 0 auto;
+  padding: 0 20px;
+  /* Horizontal padding */
+}
+
+.section {
+  padding: 80px 0;
+  /* Vertical padding for sections */
+  text-align: center;
+}
+
+.section-light-gray {
+  background-color: var(--color-light-gray);
+}
+
+.section-white {
+  background-color: var(--color-white);
+}
+
+.hero-content {
+  z-index: 1;
+  /* Ensure content is above any potential overlay */
+  padding: 20px;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  /* White headline on dark background */
+  font-size: 6em;
+  /* Even larger hero headline */
+  font-weight: 700;
+  /* Bold for impact */
+  margin-bottom: 0.1em;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.9);
+  /* Slightly translucent white text */
+  font-size: 1.5em;
+  font-weight: 400;
+  /* Regular weight */
+  max-width: 900px;
+}
+
+/* Image Styling within sections */
+.section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* Remove extra space below image */
+  margin: 40px auto;
+  /* Vertical margin */
+  border-radius: 12px;
+  /* Slightly rounded corners often seen */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+}
+
+/* Specific Content Styling */
+.text-block {
+  max-width: 800px;
+  /* Limit width for readability */
+  margin: 40px auto;
+  /* Center the block */
+}
+
+.text-block h2 {
+  margin-top: 0;
+  /* Adjust spacing */
+  margin-bottom: 0.5em;
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-light-gray);
+  color: var(--color-dark-gray);
+  padding: 40px 20px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  max-width: none;
+  /* Don't limit footer text width */
+}
+
+/* Header (Simple fixed header) */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Semi-transparent white */
+  backdrop-filter: blur(10px);
+  /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  z-index: 100;
+  /* Ensure header is on top */
+  padding: 14px 20px;
+  /* Vertical and horizontal padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-medium-gray);
+  /* Subtle bottom border */
+}
+
+.logo a {
+  font-size: 1.2em;
+  font-weight: 700;
+  /* Bold */
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-left: 30px;
+  /* Spacing between nav items */
+}
+
+nav a {
+  color: var(--color-black);
+  font-size: 0.95em;
+  font-weight: 400;
+  /* Regular weight */
+  text-decoration: none;
+  padding: 5px 0;
+  /* Padding for click area */
+  position: relative;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  /* Subtle underline on hover */
+}
+
+/* Adjust main content to not be hidden by fixed header */
+main {
+  padding-top: 60px;
+  /* Add padding equal to header height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .hero h1 {
+    font-size: 4em;
+  }
+
+  .hero p {
+    font-size: 1.2em;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  nav ul {
+    /* Could stack or hide on mobile, but keeping it simple for this mockup */
+    display: none;
+    /* Simple hide on mobile */
+  }
+
+  header {
+    justify-content: center;
+    /* Center logo if nav hidden */
+  }
+
+  main {
+    padding-top: 50px;
+  }
+}
+
+/* Dropdown Menu Styling */
+nav li.dropdown {
+  position: relative;
+}
+
+nav li .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid var(--color-medium-gray);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none;
+  min-width: 180px;
+  padding: 10px 0;
+  z-index: 999;
+}
+
+nav li .dropdown-menu li {
+  margin: 0;
+}
+
+nav li .dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--color-black);
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+nav li .dropdown-menu a:hover {
+  background-color: var(--color-light-gray);
+}
+
+/* Show dropdown on hover */
+nav li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+nav ul li {
+  position: relative;
+}
+
+.mega-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100vw;
+  background-color: #f9f9f9;
+  padding: 40px 100px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-start;
+  gap: 60px;
+  z-index: 1000;
+  border-top: 1px solid #ddd;
+}
+
+.menu-column h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.menu-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-column li {
+  margin: 8px 0;
+}
+
+.menu-column a {
+  color: #000;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.dropdown:hover .mega-menu {
+  display: flex;
+}
+
+/* --- Annotation Styles --- */
+.highlight {
+  background: linear-gradient(
+    45deg,
+    var(--highlight-yellow) 80%,
+    transparent 100%
+  );
+  border-radius: 0.3em;
+  padding: 0.1em 0.2em;
+  box-decoration-break: clone;
+  font-weight: 600;
+  transition: background 0.3s;
+  color: black;
+}
+
+.highlight-pink {
+  background: linear-gradient(
+    45deg,
+    var(--highlight-pink) 80%,
+    transparent 100%
+  );
+}
+
+.highlight-green {
+  background: linear-gradient(
+    45deg,
+    var(--highlight-green) 80%,
+    transparent 100%
+  );
+}
+
+.circled-container {
+  display: inline-block;
+  position: relative;
+}
+
+.circled {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  color: var(--color-black);
+  background: none;
+}
+
+.circled-svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  width: 120%;
+  height: 140%;
+}
+
+/* Hand-drawn effect for the circle */
+.circled-svg ellipse {
+  stroke: var(--circle-red);
+  stroke-width: 4;
+  fill: none;
+  stroke-dasharray: 8 6;
+  filter: drop-shadow(0 2px 6px rgba(255, 59, 48, 0.15));
+  animation: drawCircle 1.2s cubic-bezier(0.77, 0, 0.18, 1) 1;
+}
+
+@keyframes drawCircle {
+  from {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Blue circle variant */
+.circled-blue .circled-svg ellipse {
+  stroke: var(--circle-blue);
+}
+
+/* Optional: subtle marker underline */
+.marker-underline {
+  background: none;
+  border-bottom: 0.25em solid var(--highlight-yellow);
+  border-radius: 0.1em;
+  padding: 0 0.1em;
+  font-weight: 600;
+}
+
+/* --- Hero Section --- */
+.hero {
+  height: 100vh;
+  background-image: url("home-hero-img.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  z-index: 1;
+  padding: 20px;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  font-size: 6em;
+  font-weight: 700;
+  margin-bottom: 0.1em;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5em;
+  font-weight: 400;
+  max-width: 900px;
+}
+
+/* --- Animation Classes --- */
+.animatable {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-delay: 0.1s; /* Slight delay for staggered effect if needed */
+}
+
+.animatable.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Parallax for Hero Background */
+.hero {
+  /* ... existing hero styles ... */
+  background-attachment: fixed; /* Simple parallax, JS can enhance this */
+  /* If using JS-driven parallax, you might remove background-attachment: fixed later
+       and control background-position-y via JS. For now, this is a good start. */
+}
+
+/* Active Nav Link Styling (Optional) */
+nav a.active {
+  font-weight: 700; /* Make active link bold */
+  /* color: var(--circle-blue); */ /* Or change color */
+}
+
+/* Adjustments for content layout */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background-color: var(--color-light-gray);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  text-align: left;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: var(--color-black);
+}
+.card p {
+  font-size: 1em;
+  color: var(--color-dark-gray);
+  margin-left: 0; /* Override global p margin */
+  margin-right: 0;
+}
+.card a.learn-more {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--circle-blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+.card a.learn-more:hover {
+  text-decoration: underline;
+}
+
+/* Ensure images within cards are responsive */
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
